@@ -3,7 +3,7 @@ import About from "../components/About";
 import Services from "../components/Services";
 import Portfolio from "../components/Portfolio";
 import Contact from "../components/Contact";
-
+import Footer from "../components/Footer";
 function Home() {
   return (
     <>
@@ -12,6 +12,7 @@ function Home() {
       <Services />
       <Portfolio />
       <Contact />
+      <Footer/>
     </>
   );
 }
