@@ -139,7 +139,7 @@ import {
                 </a>
   
                 <a
-                  href="https://wa.me/254 704 286251"
+                  href="https://wa.me/254743143013"
                   target="_blank"
                   rel="noreferrer"
                   className="bg-green-500 p-3 rounded-full hover:scale-110 transition"

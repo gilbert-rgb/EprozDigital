@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eprozdigital.netlify.app/sitemap.xml
