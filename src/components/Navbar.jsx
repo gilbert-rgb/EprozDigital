@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-
+import logo from "../assets/images/eprozrrr.png";
 const links = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
@@ -15,12 +15,24 @@ function Navbar() {
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-5 lg:px-8 py-4">
+{/* Logo */}
+<a
+  href="#home"
+  className="flex items-center gap-3 group"
+>
+  <img
+    src={logo}
+    alt="eProz Digital"
+    className="h-12 md:h-14 lg:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+  />
 
-        {/* Logo */}
-        <a href="#home" className="text-2xl font-bold">
-          <span className="text-blue-600">eProz</span>
-          <span className="text-red-600">Digital</span>
-        </a>
+  {/* Optional slogan */}
+  <div className="hidden lg:block">
+    <p className="text-xs text-gray-500 tracking-widest uppercase">
+      Print • Brand • Design
+    </p>
+  </div>
+</a>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-8 font-medium">
