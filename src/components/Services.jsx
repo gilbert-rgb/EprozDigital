@@ -1,93 +1,50 @@
-import {
-    FaPrint,
-    FaTshirt,
-    FaPalette,
-    FaCamera,
-    FaLaptop,
-    FaBullhorn,
-  } from "react-icons/fa";
-  
-  const services = [
-    {
-      icon: <FaPrint size={40} />,
-      title: "Printing",
-      description: "Flyers, Posters, Business Cards, Banners & Brochures",
-    },
-    {
-      icon: <FaTshirt size={40} />,
-      title: "Apparel Printing",
-      description: "T-Shirts, Hoodies, Jerseys, Caps & Uniform Branding",
-    },
-    {
-      icon: <FaPalette size={40} />,
-      title: "Graphic Design",
-      description: "Logos, Posters, Social Media Designs & Branding",
-    },
-    {
-      icon: <FaBullhorn size={40} />,
-      title: "Branding",
-      description: "Vehicle Branding, Roll-up Banners & Shop Signage",
-    },
-    {
-      icon: <FaCamera size={40} />,
-      title: "Photography",
-      description: "Professional Photography & Photo Printing",
-    },
-    {
-      icon: <FaLaptop size={40} />,
-      title: "Cyber Services",
-      description: "eCitizen, KRA, HELB, CV Writing & Online Applications",
-    },
-  ];
-  
-  function Services() {
-    return (
-        <section
-        id="services"
-        className="scroll-mt-24 py-24 bg-white"
-      >
-        <div className="max-w-7xl mx-auto px-5">
-  
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900">
-              Our Services
-            </h2>
-  
-            <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-              Everything you need under one roof—from professional printing
-              and branding to digital and cyber services.
-            </p>
-          </div>
-  
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-  
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="bg-slate-50 rounded-2xl p-8 shadow-sm hover:shadow-xl transition duration-300 hover:-translate-y-2"
-              >
-                <div className="text-blue-600 mb-6">
-                  {service.icon}
-                </div>
-  
-                <h3 className="text-2xl font-semibold mb-3">
-                  {service.title}
-                </h3>
-  
-                <p className="text-gray-600">
-                  {service.description}
-                </p>
-  
-                <button className="mt-6 text-blue-600 font-semibold hover:underline">
-                  Learn More →
-                </button>
-              </div>
-            ))}
-  
-          </div>
+import { FaPrint, FaTshirt, FaPalette, FaBullhorn, FaCamera, FaLaptop } from "react-icons/fa";
+import { Reveal, SectionHead } from "./Reveal";
+import { waLink } from "../siteConfig";
+
+const services = [
+  { icon: FaPrint, title: "Printing", items: "Business cards, flyers, posters, brochures, banners, stickers", ask: "printing" },
+  { icon: FaTshirt, title: "Apparel & Merchandise", items: "T-shirts, hoodies, jerseys, caps, uniforms, branded mugs", ask: "apparel or merchandise printing" },
+  { icon: FaPalette, title: "Graphic Design", items: "Logos, stationery, social media graphics, marketing materials", ask: "graphic design" },
+  { icon: FaBullhorn, title: "Signage & Branding", items: "Shop signboards, vehicle branding, roll-up banners", ask: "signage or branding" },
+  { icon: FaCamera, title: "Photography", items: "Portraits, events, product photos and photo printing", ask: "photography" },
+  { icon: FaLaptop, title: "Cyber Services", items: "eCitizen, KRA, HELB, CV writing, online applications, scanning", ask: "cyber services" },
+];
+
+export default function Services() {
+  return (
+    <section id="services" className="scroll-mt-20 bg-white py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <Reveal>
+          <SectionHead
+            eyebrow="What we do"
+            title="Everything your business needs, under one roof"
+            text="From first design to finished product — one team, one place to collect."
+          />
+        </Reveal>
+
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((s, i) => (
+            <Reveal key={s.title} delay={i * 0.05}>
+              <article className="group h-full rounded-2xl border border-slate-200 bg-paper p-7 transition hover:-translate-y-1 hover:border-brand/40 hover:shadow-xl">
+                <span className="grid h-12 w-12 place-items-center rounded-xl bg-ink text-xl text-brand">
+                  <s.icon aria-hidden />
+                </span>
+                <h3 className="mt-5 font-display text-xl font-bold text-ink">{s.title}</h3>
+                <p className="mt-2 leading-7 text-slate-600">{s.items}</p>
+                <a
+                  href={waLink(`Hello EProz Digital, I need ${s.ask}.`)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-block text-sm font-semibold text-brand-dark hover:underline"
+                >
+                  Ask about {s.title.toLowerCase()} →
+                </a>
+              </article>
+            </Reveal>
+          ))}
         </div>
-      </section>
-    );
-  }
-  
-  export default Services;
+      </div>
+    </section>
+  );
+}

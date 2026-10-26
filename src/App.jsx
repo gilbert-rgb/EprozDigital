@@ -1,13 +1,12 @@
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import { MotionRoot } from "./components/Reveal";
 
-function App() {
+export default function App() {
   return (
-    <>
+    <MotionRoot>
       <Navbar />
       <Home />
-    </>
+    </MotionRoot>
   );
 }
-
-export default App;

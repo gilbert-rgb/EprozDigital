@@ -1,123 +1,74 @@
 import { motion } from "framer-motion";
+import { FaWhatsapp, FaCheckCircle } from "react-icons/fa";
 import heroImage from "../assets/images/hero.jpg";
+import { waLink, site } from "../siteConfig";
 
-function Hero() {
+const points = [
+  "Walk-in print shop in Ruiru",
+  "Design + print + branding in one place",
+  "Quote on WhatsApp, fast reply",
+];
+
+export default function Hero() {
   return (
-    <section
-      id="home"
-      className="scroll-mt-32 pt-44 pb-20 bg-gradient-to-br from-slate-50 via-white to-blue-50"
-    >
-      <div className="max-w-7xl mx-auto px-5 lg:px-8">
+    <section id="home" className="relative overflow-hidden bg-ink pt-32 pb-20 text-white lg:pt-40 lg:pb-28">
+      <div className="pointer-events-none absolute -right-40 -top-40 h-[34rem] w-[34rem] rounded-full bg-brand/20 blur-3xl" />
+      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 lg:grid-cols-2 lg:px-8">
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">
+            Printing &amp; Branding · Ruiru, Kenya
+          </p>
+          <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.08] sm:text-5xl lg:text-6xl">
+            Print that makes your business look{" "}
+            <span className="text-brand">serious.</span>
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
+            {site.name} designs and prints business cards, banners, signage, branded apparel and
+            more, plus custom websites and software — for businesses, schools, churches and individuals across Ruiru and Nairobi.
+          </p>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <ul className="mt-6 space-y-2">
+            {points.map((p) => (
+              <li key={p} className="flex items-center gap-2 text-slate-200">
+                <FaCheckCircle className="shrink-0 text-brand" aria-hidden /> {p}
+              </li>
+            ))}
+          </ul>
 
-          {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -80 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center lg:text-left"
-          >
+          <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+            <a
+              href="#quote"
+              className="rounded-full bg-brand px-8 py-4 text-center font-semibold text-white shadow-lg shadow-brand/30 transition hover:bg-brand-dark"
+            >
+              Request a Quote
+            </a>
+            <a
+              href={waLink("Hello EProz Digital, I would like to enquire about printing.")}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-8 py-4 font-semibold transition hover:bg-white/10"
+            >
+              <FaWhatsapp className="text-xl text-green-400" aria-hidden /> Chat on WhatsApp
+            </a>
+          </div>
+        </motion.div>
 
-            <span className="inline-block bg-blue-100 text-blue-700 px-5 py-2 rounded-full text-sm font-semibold">
-              Welcome to eProz Digital
-            </span>
-
-            <h1 className="mt-8 text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-gray-900">
-              Print.
-              <br />
-
-              <span className="text-blue-600">
-                Brand.
-              </span>
-
-              <br />
-
-              <span className="text-red-600">
-                Grow.
-              </span>
-
-            </h1>
-
-            <p className="mt-8 text-lg text-gray-600 leading-8 max-w-xl mx-auto lg:mx-0">
-              We provide professional printing, branding, graphic design,
-              photography, custom apparel, signage, corporate branding and
-              cyber services that help businesses stand out and grow.
-            </p>
-
-            <div className="mt-10 flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
-
-              <a
-                href="#contact"
-                className="bg-gradient-to-r from-blue-600 to-red-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:scale-105 transition duration-300"
-              >
-                Get a Free Quote
-              </a>
-
-              <a
-                href="#portfolio"
-                className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-blue-600 hover:text-white transition duration-300"
-              >
-                View Portfolio
-              </a>
-
-            </div>
-
-            {/* Stats */}
-            <div className="mt-14 grid grid-cols-3 gap-4">
-
-              <div className="bg-white rounded-2xl shadow-lg p-5">
-                <h2 className="text-3xl font-bold text-blue-600">
-                  500+
-                </h2>
-                <p className="text-gray-500">
-                  Projects
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl shadow-lg p-5">
-                <h2 className="text-3xl font-bold text-red-600">
-                  100%
-                </h2>
-                <p className="text-gray-500">
-                  Quality
-                </p>
-              </div>
-
-              <div className="bg-white rounded-2xl shadow-lg p-5">
-                <h2 className="text-3xl font-bold text-blue-600">
-                  24/7
-                </h2>
-                <p className="text-gray-500">
-                  Support
-                </p>
-              </div>
-
-            </div>
-
-          </motion.div>
-
-          {/* Right Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 80 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex justify-center"
-          >
-
-            <img
-              src={heroImage}
-              alt="Professional Printing Services"
-              className="w-full max-w-2xl rounded-[35px] shadow-2xl hover:scale-105 transition duration-500 object-cover"
-            />
-
-          </motion.div>
-
-        </div>
-
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="relative"
+        >
+          <img
+            src={heroImage}
+            alt="Printing equipment and finished prints"
+            width="1280"
+            height="720"
+            fetchPriority="high"
+            className="w-full rounded-3xl object-cover shadow-2xl ring-1 ring-white/10"
+          />
+        </motion.div>
       </div>
     </section>
   );
 }
-
-export default Hero;

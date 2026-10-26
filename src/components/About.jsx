@@ -1,74 +1,34 @@
-import { FaPrint, FaPalette, FaCamera, FaLaptop } from "react-icons/fa";
+import { Reveal, SectionHead } from "./Reveal";
+import { site } from "../siteConfig";
 
-function About() {
-  const features = [
-    {
-      icon: <FaPrint className="text-3xl text-blue-600" />,
-      title: "Professional Printing",
-    },
-    {
-      icon: <FaPalette className="text-3xl text-red-600" />,
-      title: "Creative Branding",
-    },
-    {
-      icon: <FaCamera className="text-3xl text-green-600" />,
-      title: "Photography",
-    },
-    {
-      icon: <FaLaptop className="text-3xl text-purple-600" />,
-      title: "Cyber Services",
-    },
-  ];
+const values = [
+  { title: "Proof before print", text: "You approve the design before we produce, so there are no costly surprises." },
+  { title: "One-stop shop", text: "Design, printing, branding and cyber services handled together." },
+  { title: "Local & reachable", text: "A real shop on Ruiru Bypass — walk in, call or WhatsApp us." },
+];
 
+export default function About() {
   return (
-    <section
-      id="about"
-      className="scroll-mt-24 py-24 bg-gray-50"
-    >
-      <div className="max-w-7xl mx-auto px-5">
-
-        <div className="text-center">
-
-          <span className="text-blue-600 font-semibold uppercase">
-            About Us
-          </span>
-
-          <h2 className="text-4xl md:text-5xl font-bold mt-3">
-            Your Trusted Printing & Branding Partner
-          </h2>
-
-          <p className="mt-6 text-gray-600 max-w-3xl mx-auto leading-8">
-            At eProz Digital, we help businesses, schools and individuals
-            create lasting impressions through high-quality printing,
-            branding, photography, graphic design, custom apparel and
-            cyber services.
-          </p>
-
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
-
-          {features.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl p-8 text-center shadow hover:shadow-xl transition"
-            >
-              <div className="flex justify-center">
-                {item.icon}
+    <section id="about" className="scroll-mt-20 bg-white py-20 lg:py-28">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-2 lg:px-8">
+        <Reveal>
+          <SectionHead
+            eyebrow="About us"
+            title="Your printing and branding partner in Ruiru"
+            text={`${site.name} helps businesses, schools, churches and individuals make a lasting impression — through quality printing, thoughtful design, custom apparel and everyday cyber services, all under one roof.`}
+          />
+        </Reveal>
+        <div className="space-y-5">
+          {values.map((v, i) => (
+            <Reveal key={v.title} delay={i * 0.07}>
+              <div className="rounded-2xl border-l-4 border-brand bg-paper p-6">
+                <h3 className="font-display text-lg font-bold text-ink">{v.title}</h3>
+                <p className="mt-1 leading-7 text-slate-600">{v.text}</p>
               </div>
-
-              <h3 className="mt-5 font-semibold">
-                {item.title}
-              </h3>
-
-            </div>
+            </Reveal>
           ))}
-
         </div>
-
       </div>
     </section>
   );
 }
-
-export default About;

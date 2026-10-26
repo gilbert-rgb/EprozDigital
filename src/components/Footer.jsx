@@ -1,179 +1,56 @@
-import {
-    FaFacebookF,
-    FaInstagram,
-    FaWhatsapp,
-    FaPhoneAlt,
-    FaEnvelope,
-    FaMapMarkerAlt,
-  } from "react-icons/fa";
-  
-  function Footer() {
-    return (
-      <footer className="bg-gray-900 text-gray-300">
-  
-        {/* Top Footer */}
-        <div className="max-w-7xl mx-auto px-5 lg:px-8 py-16">
-  
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-  
-            {/* Company */}
-            <div>
-  
-              <h2 className="text-3xl font-bold">
-                <span className="text-blue-500">eProz</span>
-                <span className="text-red-500">Digital</span>
-              </h2>
-  
-              <p className="mt-5 leading-7">
-                Your trusted partner in professional printing,
-                branding, graphic design, photography,
-                custom apparel, and cyber services.
-              </p>
-  
-            </div>
-  
-            {/* Services */}
-            <div>
-  
-              <h3 className="text-white text-xl font-semibold mb-5">
-                Our Services
-              </h3>
-  
-              <ul className="space-y-3">
-  
-                <li>Printing Services</li>
-                <li>Graphic Design</li>
-                <li>Branding</li>
-                <li>T-Shirt Printing</li>
-                <li>Photography</li>
-                <li>Cyber Services</li>
-  
-              </ul>
-  
-            </div>
-  
-            {/* Quick Links */}
-            <div>
-  
-              <h3 className="text-white text-xl font-semibold mb-5">
-                Quick Links
-              </h3>
-  
-              <ul className="space-y-3">
-  
-                <li>
-                  <a href="#home" className="hover:text-blue-500 transition">
-                    Home
-                  </a>
-                </li>
-  
-                <li>
-                  <a href="#about" className="hover:text-blue-500 transition">
-                    About
-                  </a>
-                </li>
-  
-                <li>
-                  <a href="#services" className="hover:text-blue-500 transition">
-                    Services
-                  </a>
-                </li>
-  
-                <li>
-                  <a href="#portfolio" className="hover:text-blue-500 transition">
-                    Portfolio
-                  </a>
-                </li>
-  
-                <li>
-                  <a href="#contact" className="hover:text-blue-500 transition">
-                    Contact
-                  </a>
-                </li>
-  
-              </ul>
-  
-            </div>
-  
-            {/* Contact */}
-            <div>
-  
-              <h3 className="text-white text-xl font-semibold mb-5">
-                Contact Us
-              </h3>
-  
-              <div className="space-y-4">
-  
-                <div className="flex items-center gap-3">
-                  <FaPhoneAlt className="text-blue-500" />
-                  <span>0743 143 013</span>
-                </div>
-  
-                <div className="flex items-center gap-3">
-                  <FaEnvelope className="text-red-500" />
-                  <span>info@eprozdigital.co.ke</span>
-                </div>
-  
-                <div className="flex items-center gap-3">
-                  <FaMapMarkerAlt className="text-green-500" />
-                  <span>Nairobi, Kenya</span>
-                </div>
-  
-              </div>
-  
-              {/* Social Icons */}
-              <div className="flex gap-4 mt-8">
-  
-                <a
-                  href="#"
-                  className="bg-blue-600 p-3 rounded-full hover:scale-110 transition"
-                >
-                  <FaFacebookF className="text-white" />
-                </a>
-  
-                <a
-                  href="#"
-                  className="bg-pink-600 p-3 rounded-full hover:scale-110 transition"
-                >
-                  <FaInstagram className="text-white" />
-                </a>
-  
-                <a
-                  href="https://wa.me/254743143013"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="bg-green-500 p-3 rounded-full hover:scale-110 transition"
-                >
-                  <FaWhatsapp className="text-white" />
-                </a>
-  
-              </div>
-  
-            </div>
-  
+import { FaFacebookF, FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
+import { site, waLink } from "../siteConfig";
+
+const nav = [["Services", "#services"], ["Software", "#software"], ["Print Work", "#work"], ["How It Works", "#process"], ["About", "#about"], ["Contact", "#contact"]];
+
+export default function Footer() {
+  const socials = [
+    { href: site.social.facebook, icon: FaFacebookF, label: "Facebook" },
+    { href: site.social.instagram, icon: FaInstagram, label: "Instagram" },
+    { href: site.social.tiktok, icon: FaTiktok, label: "TikTok" },
+    { href: waLink(), icon: FaWhatsapp, label: "WhatsApp" },
+  ].filter((s) => s.href);
+
+  return (
+    <footer className="bg-ink text-slate-400">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-3 lg:px-8">
+        <div>
+          <p className="font-display text-2xl font-extrabold text-white">
+            EProz<span className="text-brand">Digital</span>
+          </p>
+          <p className="mt-3 max-w-sm leading-7">Printing, branding, software development and cyber services in Ruiru, Kenya.</p>
+          <div className="mt-5 flex gap-3">
+            {socials.map((s) => (
+              <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label}
+                className="grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white transition hover:bg-brand">
+                <s.icon aria-hidden />
+              </a>
+            ))}
           </div>
-  
         </div>
-  
-        {/* Bottom Footer */}
-        <div className="border-t border-gray-700">
-  
-          <div className="max-w-7xl mx-auto px-5 py-6 flex flex-col md:flex-row justify-between items-center">
-  
-            <p className="text-sm text-center md:text-left">
-              © {new Date().getFullYear()} eProz Digital. All Rights Reserved.
-            </p>
-  
-            <p className="text-sm mt-3 md:mt-0">
-              Designed & Developed by <span className="text-blue-500 font-semibold">Gilbert Cheboi</span>
-            </p>
-  
-          </div>
-  
+        <nav aria-label="Footer">
+          <p className="font-semibold text-white">Quick links</p>
+          <ul className="mt-4 space-y-2">
+            {nav.map(([n, h]) => (
+              <li key={h}><a href={h} className="hover:text-white">{n}</a></li>
+            ))}
+          </ul>
+        </nav>
+        <div>
+          <p className="font-semibold text-white">Contact</p>
+          <ul className="mt-4 space-y-2">
+            {site.phones.map((p) => <li key={p.intl}><a href={`tel:+${p.intl}`} className="hover:text-white">{p.display}</a></li>)}
+            <li><a href={`mailto:${site.email}`} className="hover:text-white">{site.email}</a></li>
+            <li>{site.address}</li>
+          </ul>
         </div>
-  
-      </footer>
-    );
-  }
-  
-  export default Footer;
+      </div>
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-6 text-sm md:flex-row lg:px-8">
+          <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
+          <p>Website by <a href={site.developer.url} target="_blank" rel="noreferrer" className="font-semibold text-white hover:text-brand">{site.developer.name}</a></p>
+        </div>
+      </div>
+    </footer>
+  );
+}
